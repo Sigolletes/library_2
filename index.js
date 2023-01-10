@@ -1,6 +1,6 @@
 // LIBRARY LOGIC
 let library = [
-  {id: 1, author: 'Author1', title: 'Title1', pages: 100, read: true},
+  {id: 1, author: 'Author1 a large name lets see if it fits', title: 'Title1 a very long title is this one to see if it fits the box', pages: 100, read: true},
   {id: 2, author: 'Author2', title: 'Title2', pages: 100, read: false},
   {id: 3, author: 'Author3', title: 'Title3', pages: 100, read: true},
   {id: 4, author: 'Author4', title: 'Title4', pages: 100, read: true},
@@ -69,14 +69,14 @@ function display() {
       div1.appendChild(aTitle);
       aTitle.innerText = el.title;
 
-      let aAuthor = document.createElement("h2");
+      let aAuthor = document.createElement("h3");
       div1.appendChild(aAuthor);
       aAuthor.innerText = el.author;
       aAuthor.style.fontStyle = "italic";
 
-      let aPages = document.createElement("h2");
+      let aPages = document.createElement("p");
       div1.appendChild(aPages);
-      aPages.innerText = el.pages;
+      aPages.innerText = el.pages + " pages";
 
       let div2 = document.createElement("div");
       article.appendChild(div2);

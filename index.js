@@ -1,5 +1,13 @@
 // LIBRARY LOGIC
-let library = [];
+let library = [
+  {id: 1, author: 'Author1', title: 'Title1', pages: 100, read: true},
+  {id: 2, author: 'Author2', title: 'Title2', pages: 100, read: false},
+  {id: 3, author: 'Author3', title: 'Title3', pages: 100, read: true},
+  {id: 4, author: 'Author4', title: 'Title4', pages: 100, read: true},
+  {id: 5, author: 'Author5', title: 'Title5', pages: 100, read: false},
+  {id: 6, author: 'Author6', title: 'Title6', pages: 100, read: true},
+  {id: 7, author: 'Author7', title: 'Title7', pages: 100, read: false}
+];
 
 const generateId = () => {
   const maxId = library.length > 0
@@ -19,24 +27,15 @@ function Book(author, title, pages, read) {
   }
 }
 
-function bookManager() {
-  const add = (book) => {
-    library.push(book)
-  }
+function deleteBook (id) {
+  let index = library.findIndex((b) => b.id === id)
 
-  const deleteBook = (id) => {
-    let index = library.findIndex((b) => b.id === id)
-
-    if (index > -1) {
-      library.splice(index, 1)
-    }
+  if (index > -1) {
+    library.splice(index, 1)
   }
-
-  return {
-    add,
-    deleteBook
-  }
+  display()
 }
+
 
 // Write a function that loops through the array and displays each book on the page. You can display them in some sort of table, or each on their own “card”.
 
@@ -51,11 +50,13 @@ const submit = document.querySelector("#submit")
 
 // DOM VARIABLES
 const main = document.querySelector("#main")
+const addDiv = document.querySelector("#addDiv")
 
 // RENDER FUNCTION
 function display() {
   main.innerHTML = "";
-  for (book of library) {
+  console.log(library)
+  for (el of library) {
       let article = document.createElement("article");
       main.appendChild(article);
       article.classList.add("book");
@@ -97,7 +98,7 @@ function display() {
       div2.appendChild(remove);
       remove.classList.add("removeButton");
       remove.innerText = "Remove";
-      remove.onclick = bookManager.deleteBook(book.id);
+      remove.onclick = () => deleteBook(el.id);
   }
 }
 display()
@@ -106,10 +107,10 @@ display()
 
 submit.addEventListener("click", () => {
   if (title.checkValidity() && author.checkValidity()) {
-      let book = new Book(title.value, author.value, pages.value || "unknown", read.checked)
-      bookManager.add(book)
-
-     // display library
+      let book = new Book(title.value, author.value, pages.value || "unknown", read.checked);
+      library.push(book)
+      console.log(book, library)
+      display()
 
   } else {
       // alert needed values

@@ -13,6 +13,8 @@
   --color3: rgb(77, 88, 85);
   --color4: rgb(140, 156, 152);
   --color5: rgb(181, 194, 190);
+  --green: rgb(107, 139, 82);
+  --red: rgb(208, 77, 77);
 }
 
 body {
@@ -74,10 +76,6 @@ p {
   gap: 10px;
 }
 
-#addDiv {
-  display: none;
-}
-
 .aReadClass, .removeButton {
   background-color: rgb(145, 76, 76);
   color: var(--color2);
@@ -98,11 +96,11 @@ p {
 }
 
 .removeButton:hover {
-  box-shadow: 0 0 10px rgb(208, 77, 77);
+  box-shadow: 0 0 10px var(--red);
 }
 
 .green {
-  background-color: rgb(107, 139, 82);
+  background-color: var(--green);
 }
 
 .red {
@@ -141,6 +139,110 @@ h1 {
   box-shadow: 0 0 25px var(--color4);
 }
 
+/* ADD NEW BOOK CONTAINER */
+
+#addDiv {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  width: clamp(300px, 80vw, 500px);
+  height: clamp(200px, 50vh, 500px);
+  background-color: var(--color5);
+  box-shadow: 0 0 15px var(--color3);
+  border-radius: 20px;
+  padding: 3vmin;
+  align-content: space-around;
+  justify-items: center;
+}
+
+#addDiv h2 {
+  color: var(--color3);
+}
+
+input {
+  background-color: var(--color2);
+  color: var(--color6);
+  padding: 8px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+
+input:hover {
+  transform: scale(1.1);
+}
+
+input:active, input:focus {
+  box-shadow: 0 0 15px var(--color2);
+}
+
+label {
+  font-size: 23px;
+}
+
+input[type='checkbox'] {
+  appearance: none;
+  background-color: var(--color2);
+  margin-left: 10px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--color4);
+  border-radius: 6px;
+  transform: translateY(0.3em);
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--green);
+  box-shadow: 0 0 15px var(--green);
+  border: 1px solid var(--color2);
+}
+
+input[type="checkbox"]:hover {
+  transform: scale(1.1) translateY(0.3em);
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+#submit, #return {
+  width: 80px;
+  height: 40px;
+  padding: 1vmin;
+  font-size: 17px;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+}
+
+#submit:hover, #return:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px var(--color3);
+}
+
+#submit {
+  background-color: var(--green);
+  margin-right: 10px;
+
+}
+
+#return {
+  background-color: var(--red);
+  margin-left: 10px;
+}
+
+#alert {
+  color: var(--red);
+  font-weight: bolder;
+  font-size: 20px;
+}
+
 /* SCROLLBAR */
 
 ::-webkit-scrollbar {
@@ -170,4 +272,3 @@ h1 {
   ::-webkit-scrollbar-corner {
 	background: rgba(0,0,0,0);
   }
-

@@ -1,12 +1,13 @@
 // LIBRARY LOGIC
+
 let library = [
-  {id: 1, author: 'Author1 a large name lets see if it fits', title: 'Title1 a very long title is this one to see if it fits the box', pages: 100, read: true},
-  {id: 2, author: 'Author2', title: 'Title2', pages: 100, read: false},
-  {id: 3, author: 'Author3', title: 'Title3', pages: 100, read: true},
-  {id: 4, author: 'Author4', title: 'Title4', pages: 100, read: true},
-  {id: 5, author: 'Author5', title: 'Title5', pages: 100, read: false},
-  {id: 6, author: 'Author6', title: 'Title6', pages: 100, read: true},
-  {id: 7, author: 'Author7', title: 'Title7', pages: 100, read: false}
+  {id: 1, title: 'Title 1: a long title for this first example book', author: 'Author 1: also the first author has a long name', pages: 100, read: true},
+  {id: 2, title: 'Title 2', author: 'Author 2', pages: 200, read: false},
+  {id: 3, title: 'Title 3', author: 'Author 3', pages: 300, read: true},
+  {id: 4, title: 'Title 4', author: 'Author 4', pages: 400, read: true},
+  {id: 5, title: 'Title 5', author: 'Author 5', pages: 500, read: false},
+  {id: 6, title: 'Title 6', author: 'Author 6', pages: 600, read: true},
+  {id: 7, title: 'Title 7', author: 'Author 7', pages: 700, read: false}
 ];
 
 const generateId = () => {
@@ -16,7 +17,7 @@ const generateId = () => {
   return maxId + 1
 }
 
-function Book(author, title, pages, read) {
+function Book(title, author, pages, read) {
   this.id = generateId()
   this.author = author
   this.title = title 
@@ -41,11 +42,6 @@ function deleteBook (id) {
   display()
 }
 
-
-// Write a function that loops through the array and displays each book on the page. You can display them in some sort of table, or each on their own “card”.
-
-// Add a “NEW BOOK” button that brings up a form allowing users to input the details for the new book: author, title, number of pages, whether it’s been read and anything else you might want. You will most likely encounter an issue where submitting your form will not do what you expect it to do. That’s because the submit input tries to send the data to a server by default. If you’ve done the bonus section for the calculator assignment, you might be familiar with event.preventDefault()
-
 // FORM DOM VARIABLES
 const title = document.querySelector("#title")
 const author = document.querySelector("#author")
@@ -55,12 +51,14 @@ const submit = document.querySelector("#submit")
 
 // DOM VARIABLES
 const main = document.querySelector("#main")
+const addButton = document.querySelector("#addButton")
+const returnButton = document.querySelector("#return")
 const addDiv = document.querySelector("#addDiv")
+const alertP = document.querySelector("#alert")
 
 // RENDER FUNCTION
 function display() {
   main.innerHTML = "";
-
   for (el of library) {
       let article = document.createElement("article");
       main.appendChild(article);
@@ -117,23 +115,29 @@ display()
 
 // EVENT LISTENERS
 
-submit.addEventListener("click", () => {
+addButton.addEventListener("click", () => {
+  addDiv.style.display = "grid"
+})
+
+returnButton.addEventListener("click", () => {
+  addDiv.style.display = "none"
+})
+
+submit.addEventListener("click", (event) => {
+  event.preventDefault()
   if (title.checkValidity() && author.checkValidity()) {
       let book = new Book(title.value, author.value, pages.value || "unknown", read.checked);
       library.push(book)
+      addDiv.style.display = "none"
       display()
-
+      title.value = ""
+      author.value = ""
+      pages.value = ""
+      read.checked = false
   } else {
-      // alert needed values
+    alertP.innerText = "Title and Author are necessary"
+    setTimeout(() => {
+      alertP.innerText = ""
+    }, 5000)
   }
-  title.value = ""
-  author.value = ""
-  pages.value = ""
-  read.checked = false
 })
-
-// Add a button on each book’s display to remove the book from the library.
-// You will need to associate your DOM elements with the actual book objects in some way. One easy solution is giving them a data-attribute that corresponds to the index of the library array.
-
-// Add a button on each book’s display to change its read status.
-//To facilitate this you will want to create the function that toggles a book’s read status on your Book prototype instance.

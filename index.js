@@ -22,14 +22,19 @@ function Book(author, title, pages, read) {
   this.title = title 
   this.pages = pages
   this.read = read
-  this.changeRead = function() {
-    read = !read
+}
+
+function changeRead (id) {
+  let index = library.findIndex((b) => b.id == id)
+  if (index > -1) {
+    library[index].read = !library[index].read
   }
+  display()
 }
 
 function deleteBook (id) {
-  let index = library.findIndex((b) => b.id === id)
-
+  let index = library.findIndex((b) => b.id == id)
+  console.log('function delete', id, index);
   if (index > -1) {
     library.splice(index, 1)
   }
@@ -55,7 +60,7 @@ const addDiv = document.querySelector("#addDiv")
 // RENDER FUNCTION
 function display() {
   main.innerHTML = "";
-  console.log(library)
+
   for (el of library) {
       let article = document.createElement("article");
       main.appendChild(article);
@@ -83,6 +88,11 @@ function display() {
       div2.classList.add("div2");
 
       let aRead = document.createElement("button");
+      aRead.setAttribute("data-id", el.id);
+      aRead.onclick = function () { 
+        changeRead(aRead.dataset.id)
+      }
+
       div2.appendChild(aRead);
       aRead.classList.add("aReadClass");
       if (el.read === true) {
@@ -94,11 +104,13 @@ function display() {
       }
 
       let remove = document.createElement("button");
-     /*  remove.setAttribute("data-id", book.id); */
+      remove.setAttribute("data-id", el.id);
       div2.appendChild(remove);
       remove.classList.add("removeButton");
       remove.innerText = "Remove";
-      remove.onclick = () => deleteBook(el.id);
+      remove.onclick = function () { 
+        deleteBook(remove.dataset.id)
+      }
   }
 }
 display()
@@ -109,7 +121,6 @@ submit.addEventListener("click", () => {
   if (title.checkValidity() && author.checkValidity()) {
       let book = new Book(title.value, author.value, pages.value || "unknown", read.checked);
       library.push(book)
-      console.log(book, library)
       display()
 
   } else {

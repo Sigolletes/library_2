@@ -9,13 +9,14 @@
 
 :root {
   --color1: rgb(74, 4, 47);
-  --color2: rgb(252, 232, 246);
-  --color3: rgb(151, 23, 102);
+  --color2: #fce8f6;
+  --color3: #971766;
   --color4: rgb(215, 73, 160);
   --color5: rgb(239, 153, 207);
   --opacity1: rgba(125, 9, 81, 0.5);
-  --read: rgb(107, 139, 82);
-  --notRead: rgb(208, 77, 77);
+  --read: linear-gradient(90deg, rgba(252,147,220,1) 0%, rgba(251,177,228,1) 20%, rgba(254,219,243,1) 40%, rgba(252,232,246,1) 50%, rgba(254,219,243,1) 60%, rgba(251,177,228,1) 80%, rgba(252,147,220,1) 100%);;
+  --notRead: linear-gradient(90deg, rgba(210,164,255,1) 0%, rgba(220,187,254,1) 20%, rgba(237,219,255,1) 40%, rgba(242,232,252,1) 50%, rgba(237,219,255,1) 60%, rgba(220,187,254,1) 80%, rgba(210,164,255,1) 100%);
+  --remove: linear-gradient(90deg, rgba(59,3,37,1) 0%, rgba(91,8,59,1) 20%, rgba(133,16,88,1) 40%, rgba(151,23,102,1) 50%, rgba(133,16,88,1) 60%, rgba(91,8,59,1) 80%, rgba(59,3,37,1) 100%);
 }
 
 body {
@@ -50,7 +51,7 @@ p {
   display: grid;
   justify-items: center;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  grid-template-rows: repeat(auto-fill, minmax(230px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(225px, 1fr));
   gap: 20px;
   padding: 50px;
   overflow-y: auto;
@@ -86,12 +87,15 @@ p {
 }
 
 .aReadClass, .removeButton {
-  background-color: rgb(145, 76, 76);
-  color: var(--color2);
   font-size: 15px;
   padding: 3px;
   border-radius: 5px;
   border: none;
+}
+
+.removeButton {
+  background: var(--remove);
+  color: var(--color2);
 }
 
 .aReadClass:hover, .removeButton:hover {
@@ -101,19 +105,21 @@ p {
 }
 
 .aReadClass:hover {
-  box-shadow: 0 0 10px rgb(123, 133, 114);
+  box-shadow: 0 0 10px var(--color3);
 }
 
 .removeButton:hover {
-  box-shadow: 0 0 10px var(--notRead);
+  box-shadow: 0 0 10px var(--color3);
 }
 
 .green {
-  background-color: var(--read);
+  background: var(--read);
+  color: var(--color1);
 }
 
 .red {
-  background-color: var(--notRead);
+  background: var(--notRead);
+  color: var(--color1);
 }
 
 /* TOP WITH TITLE AND ADD BUTTON */
@@ -167,21 +173,25 @@ h1 {
   transform: translate(-50%, -50%);
   width: clamp(300px, 80vw, 500px);
   height: clamp(200px, 50vh, 500px);
-  background-color: var(--color5);
-  box-shadow: 0 0 15px var(--color3);
+  background: url(./images/pink10.png);
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 35px var(--color3);
   border-radius: 20px;
   padding: 20px;
   align-content: space-around;
   justify-items: center;
+  color: var(--color2);
 }
 
 #addDiv h2 {
-  color: var(--color3);
+  font-size: 25px;
+  color: var(--color5);
 }
 
 input {
   background-color: var(--color2);
-  color: var(--color6);
+  color: var(--color3);
   padding: 8px;
   font-size: 20px;
   border: none;
@@ -194,7 +204,7 @@ input:hover {
 }
 
 input:active, input:focus {
-  box-shadow: 0 0 15px var(--color2);
+  box-shadow: 0 0 15px var(--color5);
 }
 
 label {
@@ -203,20 +213,20 @@ label {
 
 input[type='checkbox'] {
   appearance: none;
-  background-color: var(--color2);
+  background-color: transparent;
   margin-left: 10px;
   width: 30px;
   height: 30px;
-  border: 1px solid var(--color4);
+  border: 2px solid var(--color5);
   border-radius: 6px;
   transform: translateY(0.3em);
   cursor: pointer;
 }
 
 input[type="checkbox"]:checked {
-  background-color: var(--read);
-  box-shadow: 0 0 15px var(--read);
-  border: 1px solid var(--color2);
+  background: var(--color2);
+  box-shadow: 0 0 15px var(--color2);
+  border: 2px solid var(--color5);
 }
 
 input[type="checkbox"]:hover {
@@ -226,6 +236,10 @@ input[type="checkbox"]:hover {
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
+}
+
+::placeholder { 
+  color: var(--color4);
 }
 
 #submit, #return {
@@ -240,22 +254,22 @@ input[type=number]::-webkit-outer-spin-button {
 
 #submit:hover, #return:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 15px var(--color3);
+  box-shadow: 0 0 15px var(--color5);
 }
 
 #submit {
-  background-color: var(--read);
+  background: var(--read);
   margin-right: 10px;
 
 }
 
 #return {
-  background-color: var(--notRead);
+  background: var(--remove);
   margin-left: 10px;
 }
 
 #alert {
-  color: var(--notRead);
+  color: var(--color2);
   font-weight: bolder;
   font-size: 20px;
 }
@@ -270,25 +284,95 @@ input[type=number]::-webkit-outer-spin-button {
 	border: 6px solid transparent;
 	background-clip: content-box;
   border-radius: 20px;
-  }
+}
 
-  ::-webkit-scrollbar-track {
-	background-color: transparent;
-  border-radius: 20px;
-  }
+::-webkit-scrollbar-track {
+background-color: transparent;
+border-radius: 20px;
+}
 
-  ::-webkit-scrollbar-thumb {
-	background-color: var(--color4);
-	border-radius: 120px;
-	border: 8px solid transparent;
-	background-clip: content-box;
-  border-radius: 20px;
+::-webkit-scrollbar-thumb {
+background-color: var(--color4);
+border-radius: 120px;
+border: 8px solid transparent;
+background-clip: content-box;
+border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background-color: var(--color5);
+}
+
+::-webkit-scrollbar-corner {
+background: rgba(0,0,0,0);
+}
+
+
+/* RESPONSIVE */
+
+@media only screen and (max-width: 550px) {
+
+  #top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
   }
   
-  ::-webkit-scrollbar-thumb:hover {
-	background-color: var(--color5);
+  h1 {
+    position: static;
+    transform: none;
+    font-size: 40px;
+  }
+  
+  #addButton {
+    position: static;
+    transform: none;
+    margin: 0;
   }
 
-  ::-webkit-scrollbar-corner {
-	background: rgba(0,0,0,0);
+  #main {
+    gap: 20px;
+    padding: 20px;
   }
+
+}
+
+
+@media only screen and (max-width: 341px) {
+
+  #top {
+    padding: 0 10px;
+  }
+  
+  h1 {
+    font-size: 30px;
+  }
+  
+  #addButton {
+    font-size: 13px;
+    padding: 10px 7px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+  
+  h3 {
+    font-size: 17px;
+  }
+  
+  p {
+    font-size: 16px;
+  }
+  
+  #main {
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 10px;
+    padding: 10px 5px;
+  }
+  
+  .book {
+    padding: 5px;
+  }
+}

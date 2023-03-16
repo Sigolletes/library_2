@@ -1,24 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;1000&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 :root {
-  --color1: rgb(88, 104, 100);
-  --color2: rgb(247, 238, 228);
-  --color3: rgb(77, 88, 85);
-  --color4: rgb(140, 156, 152);
-  --color5: rgb(181, 194, 190);
-  --green: rgb(107, 139, 82);
-  --red: rgb(208, 77, 77);
+  --color1: rgb(74, 4, 47);
+  --color2: rgb(252, 232, 246);
+  --color3: rgb(151, 23, 102);
+  --color4: rgb(215, 73, 160);
+  --color5: rgb(239, 153, 207);
+  --opacity1: rgba(125, 9, 81, 0.5);
+  --read: rgb(107, 139, 82);
+  --notRead: rgb(208, 77, 77);
 }
 
 body {
-background-color: var(--color1);
+  width: auto;
+  height: 100vh;
+  background: url(./images/pink7.png);
+  background-size: cover;
+  background-position: center;
 }
 
 /* CONTAINER FOR BOOKS */
@@ -36,32 +41,36 @@ p {
 }
 
 #container {
-  width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-rows: 1fr 7fr;
+  grid-template-rows: 100px 1fr;
 }
 
 #main {
   display: grid;
   justify-items: center;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 3vmin;
-  padding: 3vmin;
+  grid-template-rows: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 20px;
+  padding: 50px;
   overflow-y: auto;
 }
 
 .book {
-  background-color: var(--color2);
+  background: url(./images/pink6.png);
+  background-size: cover;
+  background-position: center;
+  color: var(--color1);
   width: 100%;
   height: 100%;
-  padding: 2vmin;
-  border-radius: 15px;
+  padding: 15px;
   display: grid;
   grid-template-rows: 140px 40px;
   justify-items: center;
   text-align: center;
+  border: 4px double transparent;
+  border-image: linear-gradient(0.25turn, var(--color3), var(--color4), var(--color3));
+  border-image-slice: 1;
 }
 
 .div1 {
@@ -96,41 +105,49 @@ p {
 }
 
 .removeButton:hover {
-  box-shadow: 0 0 10px var(--red);
+  box-shadow: 0 0 10px var(--notRead);
 }
 
 .green {
-  background-color: var(--green);
+  background-color: var(--read);
 }
 
 .red {
-  background-color: rgb(133, 116, 108);
+  background-color: var(--notRead);
 }
 
 /* TOP WITH TITLE AND ADD BUTTON */
 
 #top {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  align-items: center;
-  justify-items: center;
+  background: url(./images/pink10.png);
+  background-size: cover;
+  background-position: center;
+  border-bottom: 4px solid transparent;
+  border-image: linear-gradient(0.25turn, var(--color3), var(--color5), var(--color3));
+  border-image-slice: 1;
 }
 
 h1 {
-  font-size: 35px;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 19px;
+  font-size: 45px;
   color: var(--color2);
 }
 
 #addButton {
-  justify-self: end;
+  position: fixed;
+  top: 0;
+  right: 0;
   background-color: var(--color2);
   color: var(--color1);
   font-size: 15px;
   font-weight: bold;
-  padding: 3vmin;
+  padding: 15px 10px;
   border-radius: 50px;
-  border: none;
-  margin: 3vmin;
+  border: 4px double var(--color4);
+  margin: 20px;
 }
 
 #addButton:hover {
@@ -153,7 +170,7 @@ h1 {
   background-color: var(--color5);
   box-shadow: 0 0 15px var(--color3);
   border-radius: 20px;
-  padding: 3vmin;
+  padding: 20px;
   align-content: space-around;
   justify-items: center;
 }
@@ -197,8 +214,8 @@ input[type='checkbox'] {
 }
 
 input[type="checkbox"]:checked {
-  background-color: var(--green);
-  box-shadow: 0 0 15px var(--green);
+  background-color: var(--read);
+  box-shadow: 0 0 15px var(--read);
   border: 1px solid var(--color2);
 }
 
@@ -214,7 +231,7 @@ input[type=number]::-webkit-outer-spin-button {
 #submit, #return {
   width: 80px;
   height: 40px;
-  padding: 1vmin;
+  padding: 10px;
   font-size: 17px;
   border-radius: 7px;
   border: none;
@@ -227,18 +244,18 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #submit {
-  background-color: var(--green);
+  background-color: var(--read);
   margin-right: 10px;
 
 }
 
 #return {
-  background-color: var(--red);
+  background-color: var(--notRead);
   margin-left: 10px;
 }
 
 #alert {
-  color: var(--red);
+  color: var(--notRead);
   font-weight: bolder;
   font-size: 20px;
 }
@@ -249,20 +266,23 @@ input[type=number]::-webkit-outer-spin-button {
 	width: 20px;
 	height: 20px;
 	background-color: var(--color3);
-	border-radius: 1vmin;
+	border-radius: 5px;
 	border: 6px solid transparent;
 	background-clip: content-box;
+  border-radius: 20px;
   }
 
   ::-webkit-scrollbar-track {
 	background-color: transparent;
+  border-radius: 20px;
   }
 
   ::-webkit-scrollbar-thumb {
 	background-color: var(--color4);
 	border-radius: 120px;
-	border: 6px solid transparent;
+	border: 8px solid transparent;
 	background-clip: content-box;
+  border-radius: 20px;
   }
   
   ::-webkit-scrollbar-thumb:hover {

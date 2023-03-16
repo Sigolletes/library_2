@@ -1,13 +1,13 @@
 // LIBRARY LOGIC
 
 let library = [
-  {id: 1, title: 'Title 1: a long title for this first example book', author: 'Author 1: also the first author has a long name', pages: 100, read: true},
-  {id: 2, title: 'Title 2', author: 'Author 2', pages: 200, read: false},
-  {id: 3, title: 'Title 3', author: 'Author 3', pages: 300, read: true},
-  {id: 4, title: 'Title 4', author: 'Author 4', pages: 400, read: true},
-  {id: 5, title: 'Title 5', author: 'Author 5', pages: 500, read: false},
-  {id: 6, title: 'Title 6', author: 'Author 6', pages: 600, read: true},
-  {id: 7, title: 'Title 7', author: 'Author 7', pages: 700, read: false}
+  {id: 1, title: 'The Power of Now', author: 'Eckhart Tolle', pages: 236, read: true},
+  {id: 2, title: 'Peace Is Every Step', author: 'Thich Nhat Hanh', pages: 134, read: true},
+  {id: 3, title: 'Consciousness Beyond Life', author: 'Pim van Lommel', pages: 448, read: true},
+  {id: 4, title: "The Artist's Way", author: 'Julia Cameron', pages: 272, read: false},
+  {id: 5, title: 'Sapiens', author: 'Yuval Noah Harari', pages: 464, read: true},
+  {id: 6, title: 'The Black Swan', author: 'Nassim Nicholas Taleb', pages: 480, read: false},
+  {id: 7, title: 'The Clan of the Cave Bear', author: 'Jean M. Auel', pages: 544, read: true}
 ];
 
 const generateId = () => {

@@ -10,10 +10,10 @@
 :root {
   --color1: rgb(74, 4, 47);
   --color2: #fce8f6;
-  --color3: #971766;
+  --color3: rgb(151, 23, 102);
   --color4: rgb(215, 73, 160);
   --color5: rgb(239, 153, 207);
-  --opacity1: rgba(125, 9, 81, 0.5);
+  --color6: rgb(94, 7, 60);
   --read: linear-gradient(90deg, rgba(252,147,220,1) 0%, rgba(251,177,228,1) 20%, rgba(254,219,243,1) 40%, rgba(252,232,246,1) 50%, rgba(254,219,243,1) 60%, rgba(251,177,228,1) 80%, rgba(252,147,220,1) 100%);;
   --notRead: linear-gradient(90deg, rgba(210,164,255,1) 0%, rgba(220,187,254,1) 20%, rgba(237,219,255,1) 40%, rgba(242,232,252,1) 50%, rgba(237,219,255,1) 60%, rgba(220,187,254,1) 80%, rgba(210,164,255,1) 100%);
   --remove: linear-gradient(90deg, rgba(59,3,37,1) 0%, rgba(91,8,59,1) 20%, rgba(133,16,88,1) 40%, rgba(151,23,102,1) 50%, rgba(133,16,88,1) 60%, rgba(91,8,59,1) 80%, rgba(59,3,37,1) 100%);
@@ -22,12 +22,12 @@
 body {
   width: auto;
   height: 100vh;
-  background: url(./images/pink7.png);
+  background: url(./images/pink10.png);
   background-size: cover;
   background-position: center;
 }
 
-/* CONTAINER FOR BOOKS */
+/* CONTAINER FOR BOOKS ############################################## */
 
 h2 {
   font-size: 20px;
@@ -58,7 +58,7 @@ p {
 }
 
 .book {
-  background: url(./images/pink6.png);
+  background: url(./images/pink7.png);
   background-size: cover;
   background-position: center;
   color: var(--color1);
@@ -70,7 +70,7 @@ p {
   justify-items: center;
   text-align: center;
   border: 4px double transparent;
-  border-image: linear-gradient(0.25turn, var(--color3), var(--color4), var(--color3));
+  border-image: linear-gradient(0.25turn, var(--color4), var(--color5), var(--color4));
   border-image-slice: 1;
 }
 
@@ -122,10 +122,10 @@ p {
   color: var(--color1);
 }
 
-/* TOP WITH TITLE AND ADD BUTTON */
+/* TOP WITH TITLE AND ADD BUTTON ############################################## */
 
 #top {
-  background: url(./images/pink10.png);
+  background: var(--color6);
   background-size: cover;
   background-position: center;
   border-bottom: 4px solid transparent;
@@ -162,7 +162,7 @@ h1 {
   box-shadow: 0 0 25px var(--color4);
 }
 
-/* ADD NEW BOOK CONTAINER */
+/* ADD NEW BOOK CONTAINER ############################################## */
 
 #addDiv {
   display: none;
@@ -242,14 +242,21 @@ input[type=number]::-webkit-outer-spin-button {
   color: var(--color4);
 }
 
+#buttons {
+  display: flex;
+}
+
 #submit, #return {
   width: 80px;
   height: 40px;
   padding: 10px;
-  font-size: 17px;
+  font-size: 20px;
   border-radius: 7px;
   border: none;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #submit:hover, #return:hover {
@@ -260,12 +267,13 @@ input[type=number]::-webkit-outer-spin-button {
 #submit {
   background: var(--read);
   margin-right: 10px;
-
+  color: var(--color1);
 }
 
 #return {
   background: var(--remove);
   margin-left: 10px;
+  color: var(--color2);
 }
 
 #alert {
@@ -274,7 +282,7 @@ input[type=number]::-webkit-outer-spin-button {
   font-size: 20px;
 }
 
-/* SCROLLBAR */
+/* SCROLLBAR ############################################## */
 
 ::-webkit-scrollbar {
 	width: 20px;
@@ -308,7 +316,7 @@ background: rgba(0,0,0,0);
 }
 
 
-/* RESPONSIVE */
+/* RESPONSIVE ############################################## */
 
 @media only screen and (max-width: 550px) {
 
